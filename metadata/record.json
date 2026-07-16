@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "record_status": "prepublication",
+  "title": "WhenToApplyPreEmergent ZIP/ZCTA Growing Degree Days (base 50°F)",
+  "version": "2026-07-16",
+  "creator": {
+    "name": "Raymond Pan",
+    "affiliation": "Offshoot Labs",
+    "role": "Builder and operator"
+  },
+  "canonical_dataset_url": "https://whentoapplypreemergent.com/datasets/gdd/",
+  "immutable_dataset_url": "https://whentoapplypreemergent.com/datasets/gdd/2026-07-16/",
+  "latest_manifest_url": "https://data.whentoapplypreemergent.com/gdd/latest.json",
+  "code_repository_url": "https://github.com/ke-pan/us-zip-gdd-dataset",
+  "doi": null,
+  "data_license": "CC-BY-4.0",
+  "code_terms": "All rights reserved; see CODE-TERMS.txt",
+  "sources": [
+    {
+      "name": "NOAA Global Historical Climatology Network Daily",
+      "url": "https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily"
+    },
+    {
+      "name": "U.S. Census ZCTA Gazetteer and ZCTA-to-county relationship file",
+      "url": "https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.2023.html"
+    }
+  ],
+  "release": {
+    "row_count": 33642,
+    "available_row_count": 33622,
+    "unavailable_row_count": 20,
+    "sample_url": "https://data.whentoapplypreemergent.com/gdd/releases/2026-07-16/sample.csv",
+    "sample_sha256": "834262003c9eae2dbb78f693bdaf4817b61d8f3854213924afe9093254598367",
+    "schema_sha256": "de9abee297dd6d1f30dc793bc124dac72412bd5c9e18263b3dbafb560f928e84",
+    "checksums_url": "https://data.whentoapplypreemergent.com/gdd/releases/2026-07-16/checksums.sha256"
+  }
+}

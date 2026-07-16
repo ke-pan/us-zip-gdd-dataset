@@ -1,0 +1,10 @@
+WhenToApplyPreEmergent source-code terms
+
+The CC BY 4.0 data terms do not grant rights in the website or pipeline source
+code. Unless a file or third-party dependency states a different license, the
+project's source code is Copyright 2026 WhenToApplyPreEmergent.com. All rights
+reserved.
+
+The public data distributions, schema, documentation, and quality metadata are
+separately covered by DATA-LICENSE.txt. Third-party packages retain their own
+licenses.

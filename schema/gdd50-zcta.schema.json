@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://whentoapplypreemergent.com/datasets/gdd/latest/schema.json",
+  "title": "WhenToApplyPreEmergent ZIP/ZCTA GDD50 row",
+  "description": "Public row contract for the derived base-50°F GDD data product.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "zcta5",
+    "state_fips",
+    "state_code",
+    "centroid_latitude_degrees",
+    "centroid_longitude_degrees",
+    "gdd_base_f",
+    "accumulation_start_date",
+    "observation_start_date",
+    "observation_end_date",
+    "days_with_observations",
+    "cumulative_gdd_f_degree_days",
+    "station_id",
+    "station_distance_km",
+    "fallback_rank",
+    "station_candidate_count",
+    "freshness_status",
+    "freshness_age_days",
+    "freshness_max_lag_days",
+    "data_available",
+    "unavailable_reason"
+  ],
+  "properties": {
+    "zcta5": {
+      "type": "string",
+      "description": "Five-character U.S. Census ZIP Code Tabulation Area code; this is not a USPS delivery-area boundary."
+    },
+    "state_fips": {
+      "type": "string",
+      "description": "Two-character state FIPS code assigned from the county containing the largest share of ZCTA land area."
+    },
+    "state_code": {
+      "type": "string",
+      "description": "USPS-style two-letter state or territory abbreviation for grouping only."
+    },
+    "centroid_latitude_degrees": {
+      "type": "number",
+      "description": "Representative latitude from the Census ZCTA Gazetteer.",
+      "units": "decimal degrees"
+    },
+    "centroid_longitude_degrees": {
+      "type": "number",
+      "description": "Representative longitude from the Census ZCTA Gazetteer.",
+      "units": "decimal degrees"
+    },
+    "gdd_base_f": {
+      "type": "integer",
+      "description": "Base temperature subtracted from each daily mean; fixed at 50°F for this release.",
+      "units": "degrees Fahrenheit"
+    },
+    "accumulation_start_date": {
+      "type": "string",
+      "description": "Calendar date at which annual GDD accumulation begins, always January 1 of source_year.",
+      "units": "ISO 8601 date"
+    },
+    "observation_start_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "First NOAA observation date with both TMAX and TMIN at the selected station.",
+      "units": "ISO 8601 date"
+    },
+    "observation_end_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Last NOAA observation date with both TMAX and TMIN at the selected station.",
+      "units": "ISO 8601 date"
+    },
+    "days_with_observations": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Count of source-year days with both TMAX and TMIN used in the accumulation.",
+      "units": "days"
+    },
+    "cumulative_gdd_f_degree_days": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Sum of max(0, (TMAX°F + TMIN°F) / 2 - 50°F) over available observation days.",
+      "units": "base-50°F degree-days"
+    },
+    "station_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "GHCN-Daily station identifier selected for this ZCTA."
+    },
+    "station_distance_km": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Haversine distance from the Census ZCTA representative point to the selected station.",
+      "units": "kilometres"
+    },
+    "fallback_rank": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Selected station rank by distance; 1 is the nearest candidate and values above 1 are fallbacks.",
+      "units": "1-based rank"
+    },
+    "station_candidate_count": {
+      "type": "integer",
+      "description": "Maximum number of nearest active stations considered by the release pipeline.",
+      "units": "stations"
+    },
+    "freshness_status": {
+      "type": "string",
+      "description": "fresh, stale, or unavailable relative to freshness_max_lag_days at generation time."
+    },
+    "freshness_age_days": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Whole UTC days from observation_end_date to release generation; null when data are unavailable.",
+      "units": "days"
+    },
+    "freshness_max_lag_days": {
+      "type": "integer",
+      "description": "Maximum accepted observation lag used by the release pipeline.",
+      "units": "days"
+    },
+    "data_available": {
+      "type": "boolean",
+      "description": "True when a fresh station record produced a GDD value for the ZCTA."
+    },
+    "unavailable_reason": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Machine-readable reason for a missing GDD value: no_recent_station_data or no_station_data."
+    }
+  }
+}

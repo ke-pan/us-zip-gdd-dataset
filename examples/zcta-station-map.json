@@ -1,0 +1,12 @@
+{
+  "99999": {
+    "state_fips": "25",
+    "state_code": "MA",
+    "latitude": 42.1,
+    "longitude": -72.6,
+    "stations": [
+      { "id": "USW00000001", "distance_km": 1.2 },
+      { "id": "USW00000002", "distance_km": 4.8 }
+    ]
+  }
+}

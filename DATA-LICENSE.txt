@@ -1,0 +1,20 @@
+WhenToApplyPreEmergent ZIP/ZCTA GDD50 data terms
+
+The project's original selection, arrangement, schema, documentation, quality
+metadata, and compilation are licensed under the Creative Commons Attribution
+4.0 International License (CC BY 4.0):
+https://creativecommons.org/licenses/by/4.0/
+
+Attribution should identify WhenToApplyPreEmergent.com, the release version,
+the dataset title, and the canonical release URL. The preferred citation is in
+CITATION.cff and metadata.json.
+
+Upstream material is not relicensed by this notice. NOAA GHCN-Daily supplied
+the underlying temperature observations, and the U.S. Census Bureau supplied
+the ZCTA geography. Their U.S. government material retains its source status.
+This project claims only its derived GDD values, mapping, quality metadata,
+documentation, and compilation. It did not collect the thermometer readings.
+
+No endorsement by NOAA, the Census Bureau, USPS, or the U.S. government is
+stated or implied. The data are provided as-is, without warranties. Review the
+methodology, freshness fields, and limitations before use.
