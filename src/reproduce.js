@@ -101,38 +101,52 @@ export function summarizeStation(dates, sourceYear) {
   };
 }
 
+function basePublicRow(zcta5, mapping, sourceYear, maxLagDays) {
+  return {
+    zcta5,
+    state_fips: mapping.state_fips,
+    state_code: mapping.state_code,
+    centroid_latitude_degrees: mapping.latitude,
+    centroid_longitude_degrees: mapping.longitude,
+    gdd_base_f: GDD_BASE_F,
+    accumulation_start_date: `${sourceYear}-01-01`,
+    station_candidate_count: mapping.stations.length,
+    freshness_max_lag_days: maxLagDays,
+  };
+}
+
 export function reproduceRows(observationCsv, zctaStationMap, options) {
   const sourceYear = Number(options?.sourceYear);
   if (!Number.isInteger(sourceYear)) throw new Error('sourceYear is required.');
   const generatedOn = options.generatedOn;
   const maxLagDays = Number(options.maxLagDays ?? 7);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(generatedOn)) {
+    throw new Error('generatedOn must be an ISO date.');
+  }
+  if (!Number.isFinite(maxLagDays) || maxLagDays < 0) {
+    throw new Error('maxLagDays must be a non-negative number.');
+  }
   const stations = parseNoaaObservations(observationCsv);
 
   return Object.keys(zctaStationMap).sort().map((zcta5) => {
     const mapping = zctaStationMap[zcta5];
-    const stationCandidateCount = mapping.stations.length;
+    const baseRow = basePublicRow(zcta5, mapping, sourceYear, maxLagDays);
+    let completeStationFound = false;
 
     for (let index = 0; index < mapping.stations.length; index++) {
       const candidate = mapping.stations[index];
       const dates = stations.get(candidate.id);
       const summary = dates ? summarizeStation(dates, sourceYear) : null;
       if (!summary) continue;
+      completeStationFound = true;
 
-      const freshnessAgeDays = generatedOn
-        ? daysBetween(summary.observationEndDate, generatedOn)
-        : null;
-      const freshnessStatus = freshnessAgeDays != null && freshnessAgeDays <= maxLagDays
-        ? 'fresh'
-        : 'stale';
+      const freshnessAgeDays = daysBetween(summary.observationEndDate, generatedOn);
+      if (freshnessAgeDays == null || freshnessAgeDays < 0 || freshnessAgeDays > maxLagDays) {
+        continue;
+      }
 
       return {
-        zcta5,
-        state_fips: mapping.state_fips,
-        state_code: mapping.state_code,
-        centroid_latitude_degrees: mapping.latitude,
-        centroid_longitude_degrees: mapping.longitude,
-        gdd_base_f: GDD_BASE_F,
-        accumulation_start_date: `${sourceYear}-01-01`,
+        ...baseRow,
         observation_start_date: summary.observationStartDate,
         observation_end_date: summary.observationEndDate,
         days_with_observations: summary.daysWithObservations,
@@ -140,23 +154,15 @@ export function reproduceRows(observationCsv, zctaStationMap, options) {
         station_id: candidate.id,
         station_distance_km: candidate.distance_km,
         fallback_rank: index + 1,
-        station_candidate_count: stationCandidateCount,
-        freshness_status: freshnessStatus,
+        freshness_status: 'fresh',
         freshness_age_days: freshnessAgeDays,
-        freshness_max_lag_days: maxLagDays,
         data_available: true,
         unavailable_reason: null,
       };
     }
 
     return {
-      zcta5,
-      state_fips: mapping.state_fips,
-      state_code: mapping.state_code,
-      centroid_latitude_degrees: mapping.latitude,
-      centroid_longitude_degrees: mapping.longitude,
-      gdd_base_f: GDD_BASE_F,
-      accumulation_start_date: `${sourceYear}-01-01`,
+      ...baseRow,
       observation_start_date: null,
       observation_end_date: null,
       days_with_observations: null,
@@ -164,12 +170,10 @@ export function reproduceRows(observationCsv, zctaStationMap, options) {
       station_id: null,
       station_distance_km: null,
       fallback_rank: null,
-      station_candidate_count: stationCandidateCount,
       freshness_status: 'unavailable',
       freshness_age_days: null,
-      freshness_max_lag_days: maxLagDays,
       data_available: false,
-      unavailable_reason: 'no_station_data',
+      unavailable_reason: completeStationFound ? 'no_recent_station_data' : 'no_station_data',
     };
   });
 }

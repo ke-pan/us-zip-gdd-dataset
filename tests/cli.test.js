@@ -2,12 +2,13 @@ import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { test } from 'node:test';
+import { fileURLToPath } from 'node:url';
 
 const execFileAsync = promisify(execFile);
 
 test('sample reproduction command emits the documented public CSV row', async () => {
   const script = new URL('../scripts/reproduce-sample.js', import.meta.url);
-  const { stdout } = await execFileAsync(process.execPath, [script.pathname]);
+  const { stdout } = await execFileAsync(process.execPath, [fileURLToPath(script)]);
 
   assert.equal(stdout, [
     'zcta5,state_fips,state_code,centroid_latitude_degrees,centroid_longitude_degrees,gdd_base_f,accumulation_start_date,observation_start_date,observation_end_date,days_with_observations,cumulative_gdd_f_degree_days,station_id,station_distance_km,fallback_rank,station_candidate_count,freshness_status,freshness_age_days,freshness_max_lag_days,data_available,unavailable_reason',

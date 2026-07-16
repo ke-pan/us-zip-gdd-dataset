@@ -83,3 +83,37 @@ test('retains an official ZCTA as unavailable when no station has complete obser
     },
   ]);
 });
+
+test('skips a stale complete station and selects the next fresh candidate', () => {
+  const observations = [
+    'STATION,DATE,ELEMENT,VALUE,MFLAG,QFLAG,SFLAG,OBS_TIME',
+    'USW00000001,20260101,TMAX,200,,,W,',
+    'USW00000001,20260101,TMIN,100,,,W,',
+    'USW00000002,20260109,TMAX,200,,,W,',
+    'USW00000002,20260109,TMIN,100,,,W,',
+    '',
+  ].join('\n');
+  const mapping = {
+    '99997': {
+      state_fips: '25',
+      state_code: 'MA',
+      latitude: 42,
+      longitude: -72,
+      stations: [
+        { id: 'USW00000001', distance_km: 1 },
+        { id: 'USW00000002', distance_km: 2 },
+      ],
+    },
+  };
+
+  const [row] = reproduceRows(observations, mapping, {
+    sourceYear: 2026,
+    generatedOn: '2026-01-10',
+    maxLagDays: 7,
+  });
+
+  assert.equal(row.station_id, 'USW00000002');
+  assert.equal(row.fallback_rank, 2);
+  assert.equal(row.freshness_status, 'fresh');
+  assert.equal(row.freshness_age_days, 1);
+});
