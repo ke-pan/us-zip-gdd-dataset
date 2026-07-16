@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/ke-pan/us-zip-gdd-dataset/main/schema/gdd50-zcta.schema.json",
+  "$id": "https://whentoapplypreemergent.com/datasets/gdd/latest/schema.json",
   "title": "WhenToApplyPreEmergent ZIP/ZCTA GDD50 row",
   "description": "Public row contract for the derived base-50°F GDD data product.",
   "type": "object",
@@ -34,7 +34,7 @@
     },
     "state_fips": {
       "type": "string",
-      "description": "Two-character state FIPS code for the state containing the greatest total ZCTA land-area share after summing all county intersections by state."
+      "description": "Two-character state FIPS code assigned from the county containing the largest share of ZCTA land area."
     },
     "state_code": {
       "type": "string",

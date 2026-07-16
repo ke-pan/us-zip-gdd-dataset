@@ -14,6 +14,7 @@ const REQUIRED_RECORD_FILES = [
   'docs/methodology.md',
   'docs/data-dictionary.md',
   'docs/limitations.md',
+  'docs/errata.md',
   'docs/reproducibility.md',
   'schema/gdd50-zcta.schema.json',
   'examples/release-2026-07-16-sample.csv',
@@ -95,11 +96,9 @@ export async function verifyPublicRecord(root, options = {}) {
 
   const schemaPath = join(directory, 'schema/gdd50-zcta.schema.json');
   const schemaSha256 = await sha256(schemaPath);
-  if (schemaSha256 !== record.release?.repository_schema_sha256) {
-    throw new Error('Public schema does not match the reviewed repository SHA-256.');
-  }
-  if (record.release?.immutable_release_schema_sha256 !== 'de9abee297dd6d1f30dc793bc124dac72412bd5c9e18263b3dbafb560f928e84') {
-    throw new Error('Immutable release Schema provenance is inconsistent.');
+  if (schemaSha256 !== record.release?.schema_sha256
+    || schemaSha256 !== 'de9abee297dd6d1f30dc793bc124dac72412bd5c9e18263b3dbafb560f928e84') {
+    throw new Error('Public schema is not byte-identical to the immutable release Schema.');
   }
   const schema = JSON.parse(await readFile(schemaPath, 'utf8'));
   const [sampleHeader] = (await readFile(samplePath, 'utf8')).split(/\r?\n/);
@@ -126,6 +125,10 @@ export async function verifyPublicRecord(root, options = {}) {
     const readme = await readFile(join(directory, 'README.md'), 'utf8');
     if (!readme.includes(record.doi)) {
       throw new Error('README.md does not contain the published DOI URL.');
+    }
+    const changelog = await readFile(join(directory, 'CHANGELOG.md'), 'utf8');
+    if (!changelog.includes(record.doi) || /DOI[^\n]*\bpending\b/i.test(changelog)) {
+      throw new Error('CHANGELOG.md still marks the DOI as pending or omits the published DOI URL.');
     }
   }
 

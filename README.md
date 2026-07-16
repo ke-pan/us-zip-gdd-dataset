@@ -23,11 +23,11 @@ NOAA, the Census Bureau, USPS, or the U.S. government.
 The 2026-07-16 release contains 33,642 official Census ZCTAs: 33,622 with a
 fresh selected-station result and 20 retained as explicitly unavailable.
 
-The repository Schema preserves the release's field names and types while
-clarifying that `state_fips` is assigned after county land-area intersections
-are summed by state. The immutable release Schema used shorter wording that
-could be read as selecting a single county; the generated values use the
-documented state-total method.
+The repository Schema is a byte-identical copy of the immutable release
+Schema. Its `state_fips` description can be read as selecting a single county,
+while the generated values use the documented state-total method. This wording
+issue is recorded without changing the frozen Schema in
+[the release errata](docs/errata.md).
 
 ## Reproduce the worked example
 
@@ -51,7 +51,7 @@ and release checksum verification.
 
 This public record contains:
 
-- the public field contract and data dictionary;
+- the byte-identical public field contract, data dictionary, and errata;
 - source provenance, selection method, formula, QA, and limitations;
 - a dependency-free implementation that reproduces a worked calculation;
 - a byte-identical copy of the published 2026-07-16 20-row sample;

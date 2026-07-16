@@ -31,9 +31,8 @@
     "unavailable_row_count": 20,
     "sample_url": "https://data.whentoapplypreemergent.com/gdd/releases/2026-07-16/sample.csv",
     "sample_sha256": "834262003c9eae2dbb78f693bdaf4817b61d8f3854213924afe9093254598367",
-    "repository_schema_sha256": "0bb91a9dd70c28e2e916218b03e5d09a8f9642d6012c170e31fc80d6d14373fe",
-    "immutable_release_schema_sha256": "de9abee297dd6d1f30dc793bc124dac72412bd5c9e18263b3dbafb560f928e84",
-    "schema_note": "Repository copy clarifies the state-total land-area assignment wording; field names, types, and released values are unchanged.",
+    "schema_sha256": "de9abee297dd6d1f30dc793bc124dac72412bd5c9e18263b3dbafb560f928e84",
+    "schema_errata": "docs/errata.md",
     "checksums_url": "https://data.whentoapplypreemergent.com/gdd/releases/2026-07-16/checksums.sha256"
   }
 }

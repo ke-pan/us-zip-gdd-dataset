@@ -9,6 +9,6 @@
   station data, fallback selection, Fahrenheit conversion, and GDD50
   accumulation.
 - Added automated public-record, sample-integrity, and credential-pattern checks.
-- Clarified the `state_fips` description to match the implemented state-total
-  land-area assignment; field names, types, and released values are unchanged.
+- Preserved a byte-identical copy of the immutable release Schema and documented
+  its `state_fips` wording issue separately in the release errata.
 - Zenodo DOI remains pending human metadata review and publication.
