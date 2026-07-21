@@ -55,7 +55,7 @@ async function listFiles(directory, base = directory) {
 function assertRecordMetadata(record, mode) {
   if (record.schema_version !== 1) throw new Error('Unsupported public record schema.');
   if (record.version !== '2026-07-16') throw new Error('Unexpected initial release version.');
-  if (record.creator?.name !== 'Raymond Pan' || record.creator?.affiliation !== 'Offshoot Labs') {
+  if (record.creator?.name !== 'PAN, KE' || record.creator?.affiliation !== 'Offshoot Labs') {
     throw new Error('Creator identity is incomplete or inconsistent.');
   }
   if (record.canonical_dataset_url !== 'https://whentoapplypreemergent.com/datasets/gdd/') {
@@ -108,8 +108,8 @@ export async function verifyPublicRecord(root, options = {}) {
 
   const citation = await readFile(join(directory, 'CITATION.cff'), 'utf8');
   for (const marker of [
-    'given-names: "Raymond"',
-    'family-names: "Pan"',
+    'given-names: "KE"',
+    'family-names: "PAN"',
     'license: CC-BY-4.0',
     record.immutable_dataset_url,
     record.code_repository_url,

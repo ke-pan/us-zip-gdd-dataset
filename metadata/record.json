@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "record_status": "prepublication",
+  "record_status": "published",
   "title": "WhenToApplyPreEmergent ZIP/ZCTA Growing Degree Days (base 50°F)",
   "version": "2026-07-16",
   "creator": {
-    "name": "Raymond Pan",
+    "name": "PAN, KE",
     "affiliation": "Offshoot Labs",
     "role": "Builder and operator"
   },
@@ -12,7 +12,7 @@
   "immutable_dataset_url": "https://whentoapplypreemergent.com/datasets/gdd/2026-07-16/",
   "latest_manifest_url": "https://data.whentoapplypreemergent.com/gdd/latest.json",
   "code_repository_url": "https://github.com/ke-pan/us-zip-gdd-dataset",
-  "doi": null,
+  "doi": "https://doi.org/10.5281/zenodo.21465487",
   "data_license": "CC-BY-4.0",
   "code_terms": "All rights reserved; see CODE-TERMS.txt",
   "sources": [

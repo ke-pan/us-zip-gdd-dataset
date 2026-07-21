@@ -16,6 +16,7 @@ NOAA, the Census Bureau, USPS, or the U.S. government.
 - [Canonical dataset record](https://whentoapplypreemergent.com/datasets/gdd/)
 - [Latest release manifest](https://data.whentoapplypreemergent.com/gdd/latest.json)
 - [Immutable 2026-07-16 record](https://whentoapplypreemergent.com/datasets/gdd/2026-07-16/)
+- [Zenodo preserved record and DOI](https://doi.org/10.5281/zenodo.21465487)
 - [CSV](https://data.whentoapplypreemergent.com/gdd/releases/2026-07-16/gdd50-zcta.csv)
 - [Parquet](https://data.whentoapplypreemergent.com/gdd/releases/2026-07-16/gdd50-zcta.parquet)
 - [Checksums](https://data.whentoapplypreemergent.com/gdd/releases/2026-07-16/checksums.sha256)
@@ -66,9 +67,11 @@ preserved dataset records.
 
 ## Citation and rights
 
-The preferred citation is in [CITATION.cff](CITATION.cff). The project's
-original data compilation, schema, documentation, and QA metadata are licensed
-under CC BY 4.0; upstream U.S. government materials retain their source status.
-Source code has separate terms in [CODE-TERMS.txt](CODE-TERMS.txt).
+The preferred citation is in [CITATION.cff](CITATION.cff), and the immutable
+release is preserved at
+[doi:10.5281/zenodo.21465487](https://doi.org/10.5281/zenodo.21465487). The
+project's original data compilation, schema, documentation, and QA metadata are
+licensed under CC BY 4.0; upstream U.S. government materials retain their source
+status. Source code has separate terms in [CODE-TERMS.txt](CODE-TERMS.txt).
 
-Maintained by Raymond Pan at Offshoot Labs.
+Maintained by PAN, KE at Offshoot Labs.

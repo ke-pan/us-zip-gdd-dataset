@@ -11,4 +11,6 @@
 - Added automated public-record, sample-integrity, and credential-pattern checks.
 - Preserved a byte-identical copy of the immutable release Schema and documented
   its `state_fips` wording issue separately in the release errata.
-- Zenodo DOI remains pending human metadata review and publication.
+- Published the preserved dataset record on Zenodo under
+  [doi:10.5281/zenodo.21465487](https://doi.org/10.5281/zenodo.21465487).
+- Synchronized the official creator identity as PAN, KE with the public record.

@@ -1,7 +1,7 @@
 import { verifyPublicRecord } from '../src/verify-public-record.js';
 
 const result = await verifyPublicRecord(new URL('../', import.meta.url), {
-  mode: process.argv.includes('--final') ? 'final' : 'prepublication',
+  mode: process.argv.includes('--prepublication') ? 'prepublication' : 'final',
 });
 
 console.log(`Public record: ${result.status}`);

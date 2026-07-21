@@ -3,21 +3,23 @@ message: "If you use this dataset, cite the immutable dataset release."
 title: "WhenToApplyPreEmergent ZIP/ZCTA Growing Degree Days (base 50°F)"
 type: dataset
 authors:
-  - given-names: "Raymond"
-    family-names: "Pan"
+  - given-names: "KE"
+    family-names: "PAN"
     affiliation: "Offshoot Labs"
 version: "2026-07-16"
 date-released: "2026-07-16"
+doi: "10.5281/zenodo.21465487"
 url: "https://whentoapplypreemergent.com/datasets/gdd/2026-07-16/"
 repository-code: "https://github.com/ke-pan/us-zip-gdd-dataset"
 license: CC-BY-4.0
 preferred-citation:
   type: dataset
   authors:
-    - given-names: "Raymond"
-      family-names: "Pan"
+    - given-names: "KE"
+      family-names: "PAN"
       affiliation: "Offshoot Labs"
   title: "WhenToApplyPreEmergent ZIP/ZCTA Growing Degree Days (base 50°F)"
   version: "2026-07-16"
   year: 2026
+  doi: "10.5281/zenodo.21465487"
   url: "https://whentoapplypreemergent.com/datasets/gdd/2026-07-16/"
