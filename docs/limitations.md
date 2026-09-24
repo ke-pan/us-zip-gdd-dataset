@@ -7,8 +7,9 @@
   shade, slope, snow, and local moisture can create meaningful differences.
 - GDD50 uses observed air temperature. It is not a direct soil-temperature
   measurement and the dataset contains no modeled soil-temperature field.
-- Missing or quality-flagged TMAX/TMIN observations are skipped. The day count
-  and observation dates show the actual accumulation coverage.
+- Missing or quality-flagged TMAX/TMIN observations are skipped. Releases dated
+  after 2026-09-24 first fill runs of up to five such days by linear
+  interpolation; the day count still reports observed days only.
 - Nearby-station fallback improves availability but can select a more distant
   station. Consumers should review `station_distance_km` and `fallback_rank`.
 - The daily pipeline can be current while the newest station observation is

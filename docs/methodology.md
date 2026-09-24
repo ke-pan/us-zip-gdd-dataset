@@ -39,6 +39,13 @@ are converted to Fahrenheit before calculation. Quality-flagged observations,
 the `-9999` missing-value sentinel, and dates lacking either TMAX or TMIN are
 skipped.
 
+Releases dated after 2026-09-24 fill short gaps before accumulation: a run of
+up to five missing days with an observed day on both sides receives TMAX and
+TMIN values interpolated linearly, and separately, between those two days.
+Longer runs, and runs at the start or end of the source-year record, stay
+skipped. `days_with_observations` still counts observed days only. The
+2026-07-16 sample and its worked reproduction predate this change.
+
 For every complete day:
 
 ```text
