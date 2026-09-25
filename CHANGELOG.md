@@ -5,9 +5,10 @@
 - Releases dated after 2026-09-24 fill runs of up to five missing TMAX/TMIN days
   by linear interpolation between the observed days on either side before
   accumulating GDD50. Longer runs remain skipped, and `days_with_observations`
-  continues to count observed days only. A masked backtest on complete
-  2022–2025 station records found a mean absolute error of about 10 GDD50 for a
-  filled five-day run, against about 52 GDD50 when the same run is skipped.
+  continues to count observed days only. The maintainer's masked backtest on
+  complete 2022–2025 station records, which is not included in this repository,
+  found a mean absolute error of about 10 GDD50 for a filled five-day run,
+  against about 52 GDD50 when the same run is skipped.
 - Published releases, including 2026-07-16, are unchanged.
 
 ## 2026-07-16 — Initial public record
